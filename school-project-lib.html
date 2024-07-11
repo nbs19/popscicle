@@ -1,0 +1,491 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+<title>POPSICLE</title>
+<style type="text/css">
+<!--
+body {
+	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+	background: #4E5869;
+	margin: 0;
+	padding: 0;
+	color: #000;
+	background-image: url(background.jpg);
+}
+
+/* ~~ Element/tag selectors ~~ */
+ul, ol, dl { /* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 /* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
+	padding-right: 15px;
+	padding-left: 15px; /* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box model math. A nested div with side padding can also be used as an alternate method. */
+}
+a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+	border: none;
+}
+
+/* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+a:link {
+	color:#414958;
+	text-decoration: underline; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
+}
+a:visited {
+	color: #4E5869;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+	text-decoration: none;
+}
+
+/* ~~ this container surrounds all other divs giving them their percentage-based width ~~ */
+.container {
+   
+	/*max-width: 1260px;/* a max-width may be desirable to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration. */
+/*	min-width: 780px;/* a min-width may be desirable to keep this layout from getting too narrow. This keeps line length more readable in the side columns. IE6 does not respect this declaration. */
+	background: #FFF;
+	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
+}
+
+/* ~~ the header is not given a width. It will extend the full width of your layout. It contains an image placeholder that should be replaced with your own linked logo ~~ */
+.header {
+	background: #6F7D94;
+}
+
+/* ~~ These are the columns for the layout. ~~ 
+
+1) Padding is only placed on the top and/or bottom of the divs. The elements within these divs have padding on their sides. This saves you from any "box model math". Keep in mind, if you add any side padding or border to the div itself, it will be added to the width you define to create the *total* width. You may also choose to remove the padding on the element in the div and place a second div within it with no width and the padding necessary for your design.
+
+2) No margin has been given to the columns since they are all floated. If you must add margin, avoid placing it on the side you're floating toward (for example: a right margin on a div set to float right). Many times, padding can be used instead. For divs where this rule must be broken, you should add a "display:inline" declaration to the div's rule to tame a bug where some versions of Internet Explorer double the margin.
+
+3) Since classes can be used multiple times in a document (and an element can also have multiple classes applied), the columns have been assigned class names instead of IDs. For example, two sidebar divs could be stacked if necessary. These can very easily be changed to IDs if that's your preference, as long as you'll only be using them once per document.
+
+4) If you prefer your nav on the right instead of the left, simply float these columns the opposite direction (all right instead of all left) and they'll render in reverse order. There's no need to move the divs around in the HTML source.
+
+*/
+.sidebar1 {
+	float: left;
+	width: 20vw;
+	background: rgb(50, 200, 170);
+	padding-bottom: 10px;
+	height: inherit ;
+	text-align: center;
+}
+.content {
+	padding: 10px 0;
+	width: 75%;
+	float: left;
+}
+
+/* ~~ This grouped selector gives the lists in the .content area space ~~ */
+.content ul, .content ol { 
+	padding: 0 15px 15px 40px; /* this padding mirrors the right padding in the headings and paragraph rule above. Padding was placed on the bottom for space between other elements on the lists and on the left to create the indention. These may be adjusted as you wish. */
+}
+
+/* ~~ The navigation list styles (can be removed if you choose to use a premade flyout menu like Spry) ~~ */
+ul.nav {
+	list-style: none; /* this removes the list marker */
+	border-top: 1px solid #666; /* this creates the top border for the links - all others are placed using a bottom border on the LI */
+	margin-bottom: 15px; /* this creates the space between the navigation on the content below */
+}
+ul.nav li {
+	border-bottom: 1px solid #666; /* this creates the button separation */
+}
+ul.nav a, ul.nav a:visited { /* grouping these selectors makes sure that your links retain their button look even after being visited */
+	padding: 5px 5px 5px 15px;
+	display: block; /* this gives the link block properties causing it to fill the whole LI containing it. This causes the entire area to react to a mouse click. */
+	text-decoration: none;
+	background: #8090AB;
+	color: #000;
+}
+ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background and text color for both mouse and keyboard navigators */
+	background: #6F7D94;
+	color: #8090AB;
+}
+
+/* ~~ The footer ~~ */
+.footer {
+	padding: 10px 0;
+	background: wheat;
+	position: relative;/* this gives IE6 hasLayout to properly clear */
+	clear: both; /* this clear property forces the .container to understand where the columns end and contain them */
+}
+
+/* ~~ miscellaneous float/clear classes ~~ */
+.fltrt {  /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page. The floated element must precede the element it should be next to on the page. */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* this class can be placed on a <br /> or empty div as the final element following the last floated div (within the #container) if the #footer is removed or taken out of the #container */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+.container .sidebar1 p a {
+	font-family: Georgia, Times New Roman, Times, serif;
+}
+.container .sidebar1 p a {
+	color: #FFF;
+}
+.container .content p em strong {
+	font-family: Georgia, Times New Roman, Times, serif;
+}
+.container .content h1 strong {
+	font-family: Georgia, Times New Roman, Times, serif;
+}
+.container .content h2 {
+	font-family: Georgia, Times New Roman, Times, serif;
+}
+.container .content ol ol li p {
+	font-family: Georgia, Times New Roman, Times, serif;
+}
+.container .content hr {
+	font-family: Georgia, Times New Roman, Times, serif;
+}
+.container .content hr {
+	font-family: Georgia, Times New Roman, Times, serif;
+}
+.container .content h2 em {
+	font-family: Georgia, Times New Roman, Times, serif;
+}
+.container .content h2 em {
+	font-family: Georgia, Times New Roman, Times, serif;
+}
+body,td,th {
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+.container .footer p strong {
+	font-family: Georgia, Times New Roman, Times, serif;
+}
+.container .footer p strong {
+	color: #FFF;
+}
+.container .footer p strong a {
+	color: #FFF;
+}
+.container .sidebar1 h4 a {
+	color: #FFF;
+}
+.pophead{
+   text-align: center;
+   font-weight: bold;
+   color: gold;
+   font-size: 70px;
+   margin:0;
+}
+.popsubh{
+	text-align: center;
+	font-family: "kalam";
+	font-weight: bold;
+   color: gold;
+   margin:0;
+   font-size: 70px;
+
+}
+div [trs]
+{
+margin-left: 10vw;	
+height: 50vh;	
+width: 60vw;
+overflow: scroll;
+}
+-->
+</style><!--[if lte IE 7]>
+<style>
+.content { margin-right: -1px; } /* this 1px negative margin can be placed on any of the columns in this layout with the same corrective effect. */
+ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it needs to correct extra whiltespace between the links */
+</style>
+<![endif]-->
+</head>
+
+<body>
+
+<div class="container">
+
+	<div class="sidebar1">
+		<h4>&nbsp;</h4>     
+	   <h2><a href="home.html">Home</a></h2>
+	   <p>&nbsp;</p>
+	   <!-- <h4><strong><a href="vision.html">Vision</a></strong></h4>
+	   <h4>&nbsp;</h4> -->
+	   <h2><a href="school-project-lib.html"><strong>School-Project Library</strong></a></h2>
+		<h4>&nbsp;</h4>  
+		<h2><a href="e-books.html">E-Books</a></h2>
+		<h4>&nbsp;</h4>
+	   <h2><a href="Audio.html">Audio Books</a></h2>
+		 <h4>&nbsp;</h4>    
+	   <!--<h4><a href="e-book.html">E books</a></h4>
+		 <h4>&nbsp;</h4> -->
+	   <h2><a href="Videos.html">Videos</a></h2>
+		 <h4>&nbsp;</h4>
+	   <h2><a href="media.html">Media</a></h2>
+		 <h4>&nbsp;</h4>
+		<h2><a href="gallery.html">Gallery</a></h2>
+		 <h4>&nbsp;</h4>	 	 
+	   <h2><a href="Career_Guidance.html">Career Guidance</a></h2>
+	   <p>&nbsp;</p>
+	   <h2><a href="Sponsors.html">Sponsors</a></h2>
+	   <h4>&nbsp;</h4>
+	   <h2><a href="reader-corner.html">Reader's Corner</a></h2>
+	   <h4>&nbsp;</h4>
+		<h2><a href="contact-us.html">Contact Us</a></h2>
+	   <p></p>
+     <p>&nbsp;</p>
+     <p>&nbsp;</p>
+     <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+	<p>&nbsp;</p>
+    <p>&nbsp;</p>
+	<p>&nbsp;</p>
+    <p>&nbsp;</p>
+	<p>&nbsp;</p>
+    <p>&nbsp;</p>
+	<p>&nbsp;</p>
+    <p>&nbsp;</p>
+	<p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <h2 class="pophead"> POPular ScIence CLiquE</h2>
+  <h3 class="popsubh"> <u>POPSICLE</u></h3>
+  <div class="content">
+	<!-- <h2 align="center" style="font-weight: bold;"><u>BOOK LIST </u></h2> -->
+</br>
+</br>
+<h2> <u>                              Tamil Books:           </u>   </h2>  	
+  <div trs="true">
+</br>                                                     
+<p>  1. &nbsp; ஒலியின் வேகம் (How did we find out speed of light ) </br></br>
+  2. &nbsp; ரோபோ (Robots) </br></br>
+  3. &nbsp;மரபணு ( How did we find out about Genes ) </br></br>
+  4. &nbsp; விண்வெளி (How did we find out about Outer space )</br></br>
+  5. &nbsp;நுண்ணலைகள் பற்றி நாம் எவ்வாறு கண்டரிந்தோம் (How
+  did we find out about Microwaves )</br></br>
+  6.&nbsp; புளுட்டோவை பற்றி நாம் எவ்வாறு கண்டரிந்தோம் (How did
+  we find out about Pluto )</br></br>
+  7. &nbsp;டைனோசர்கள் பற்றி நாம் எவ்வாறு கண்டரிந்தோம் (How
+  did we find out about dinosaurs )</br></br>
+  8.&nbsp; உலகம் உருண்டை என்று நாம் எவ்வாறு அறிந்தோம் (How did
+  we find out &quot;The earth is round&quot;)</br></br>
+  9.&nbsp; மனித வேர்களை பற்றி நாம் எவ்வாறு அறிந்தோம் ( How did we
+  find out about our human roots)</br></br>
+  10.&nbsp; நிலநடுக்கம் பற்றி நாம் எவ்வாறு அறிந்தோம் ( How did we find
+  out about earthquakes )</br></br>
+  11. &nbsp;வாழ்வின் துவக்கம் குறித்து நாம் எவ்வாறு அறிந்தோம் (How
+  did we find out about &quot; The beginning of life&quot; )</br></br>
+  12. &nbsp;பிரபஞ்சம் பற்றி நாம் எவ்வாறு கண்டரிந்தோம் ( How did we
+  find out about&quot;The universe&quot; )</br></br>
+  
+  13. &nbsp;கணினி பற்றி நாம் அறிந்தது எப்படி (How did we find out about
+  computers )</br></br>
+  14.&nbsp; இரத்தம் (Blood)</br></br>
+  15.&nbsp; எரிமலைகள் (Volcano)</br></br>
+  16.&nbsp; அண்டார்டிகா (Antarctica)</br></br>
+  17.&nbsp; வால் நட்சத்திரங்கள் (Comets )</br></br>
+  18.&nbsp; நெப்டியூன் ( Neptune )</br></br>
+  19.&nbsp; நிலக்கரி (Coal )</br></br>
+  20. &nbsp;ஆற்றல் ( Energy )</br></br>
+  21.&nbsp; கிருமிகள் (Gems )</br></br>
+  22.&nbsp; கருந்துளைகள் (Black holes) </br>    </p>
+</div>
+
+
+</br>
+</br>
+</br>
+</br>
+<h2> <u>                           Telugu Books:           </u>   </h2>  	
+  <div trs="true">
+</br>                                                     
+<p>  
+	<u> <b>Original Books: </b></u>  </br> </br>
+
+	1. మూ డడు గు ల్లో విశ్వం (The universe in three steps - A book on how scientists measure very large distances in
+	the universe), Manchipustakam.  </br></br>
+	2. భూ మి గుం డ్రం గా వుం ది – హాస్య భరిత సైన్స్ నా టిక (science drama for children), Peacock publishers.  </br></br>
+	3. The earth is round – science drama for children (English), Peacock Publishers.  </br></br>
+	4. భూ మి తరు వా త ఎక్క డ? (A book on exploration and colonization of Mars), Manchipustakam.  </br></br>
+	5. అం కెల మాం త్రికు డు శ్రీనివా స రా మా ను జన్ – ఇతర గణిత గా ధలు (a series of historical anecdotes on
+	mathematics), Manchipustakam.  </br></br>
+	6. డా ర్వి న్ చెప్పి న పరిణా మ సిద్ధాం తం , (Darwin’s theory of evolution), Peacock Classics.   </br></br>
+	7. కొలం బస్ సా హస యా త్రలుత్రలు, (The Voyages of Columbus), Peacock Classics.  </br></br>
+	8. వా స్కో ద గా మా , (Vasco da Gama), Peacock Classics.  </br></br>
+	9. గెలీలియో గెలీలీ, (Galileo), Peacock Classics. </br></br>
+	10. శ్రీనివా స రా మా ను జన్, (Srinivasa Ramanujan), Peacock Classics.  </br></br>
+	11. జం తు సమా జా లు – అవి నేర్పే పా ఠా లు , (Animal communities – the lessons they teach) Manchipustakam.  </br></br>
+	12. ఐసా క్ న్యూ టన్ – జీవితం , కృ షి, (Isaac Newton’s biography) , Peacock Classics.  </br></br>
+	13. వైజ్ఞా నిక విప్లవకా రు డు – ఆల్బ ర్ట్ ఐన్స్ట యిన్ (Einstein’s biography), Peacock Classics.  </br></br>
+	14. నీటిపై తేలే నగరా లు – ఇతర శా స్త్ర సాం కేతిక విం తలు , (Floating cities and other wonders of engineering),
+	Manchipustakam. </br></br>
+	15. రా కెట్ కు ర్రా ళ్లు – సైన్స్ సినిమా ల పరిచయం , (October sky and other science-based movies – a review)
+	Manchipustakam.  </br></br>
+	16. మెదడు చరిత్ర,త్ర(history of the brain), Manchipustakam.  </br></br>
+	17. గ్రీకుగ్రీకు వీరు లు , (Peacock publishers) (Greek heroes - from Greek mythology)  </br></br>
+	18. ఖగోళశా శాస్త్ర చరిత్ర (History of Astronomy), పీకా క్ క్లా సిక్స్ .  </br></br>
+	
+	19. రా కెట్ కథ, మా నవు డి అం తరిక్ష పర్య టనా చరిత్ర.త్ర(Rocket story – the story of the exploration of space),
+	పీకా క్ క్లా సిక్స్ .  </br></br>
+	20. లో కం చు ట్టిన వీరు లు (కొలం బస్, వా స్కో ద గా మా , మా జెలా న్ ల అద్భు త సము ద్ర యా త్రలుత్రలు), (Explorers of the
+	Seas – the stories of Columbus, Vasco da Gama and Magellan) పీకా క్ క్లా సిక్స్ .   </br></br>
+	21. వం తెనలు , (Bridges), ఎమెస్కో .  </br></br>
+	
+	22. ఆకా శ వీధిలో అపరం జి బొ మ్మ , పిల్లల సైన్స్ ఫిక్షన్ నవల, (Sci-fi novella for children), ఎమెస్కో .  </br></br>
+	23. చిరా యు వు లు , ప్రా చీన రోమన్ చరిత్ర,త్ర(Immortals – Ancient Roman History), మం చిపు స్తకం ప్రచుప్రచురణలు .  </br></br>
+	24. Understanding Sound with fun experiments, మం చిపు స్తకం ప్రచుప్రచురణలు .  </br></br>
+	25. సరదా ప్రయోప్ర గా లతో శబ్దం , Manchi Pustakam publications.  </br></br>
+	26. అం దమైన విప్లవం , (A beautiful Revolution - A history of European Renaissance), Peacock Classics, 2022.  </br></br>
+	27. లియొనా ర్డో దా విం చీ (Leonardo da Vinci), Peacock Classics, 2023.  </br></br>
+	28. మహాశిల్పి మైకేలేం జిలో (Michelangelo), Peacock Classics, 2023.  </br></br>
+	29. రా కెట్ కు ర్రా ళ్లు నేర్పే నేతృ త్వ పా ఠా లు , Manchi Pustakam publications.  </br></br>
+	
+	<u><b>Translations:  </b></u> </br> </br>
+	1. “Learning all the time” by John Holt. 
+	నేర్చుకోవడం పిలల్ల నైజం, Manchipustakam  </br></br>
+	2. “How children learn” by John Holt
+	పిల్లలు నేర్చుకునేవిధానము. - 4 volumes, Manchipustakam 
+	<p style="padding-left: 40px;">  
+		 2.1. ఆటలు, ప్రయోగాలు </br>
+         2.2. మాట్లాడటం, చదవడం</br>
+	     2.3. క్రీడలు, కళలు, గణితం</br>
+	     2.4. ఊహాగానం </br></p>
+	3. “A chemical history of candle” by Michael Faraday
+	కొవ్వొత్తి రసాయన చరిత్ర, Manchipustakam   </br></br>
+	4. “The Story of Physics” by T. Padmanabhan (cartoon book on history of physics)
+	భౌతిక శాస్త్రం ఎలా మారింది? Manchipustakam  </br></br>
+	5. Story of Astronomy by Uday Patil. బొమ్మలలో ఖగోళ శాస్త్రం . (cartoon book on astronomy)
+	Manchipustakam </br></br>
+	6. Mr. Tompkins in Wonderland by George Gamow. సుబ్బారావు సాపేక్ష లోకం. Manchipustakam  </br></br>
+	7. Jupiter Five (short story) by Arthur C. Clarke. బృహస్పతి పంచమం. Manchipustakam  </br></br>
+	8. Solar Energy, by Arvind Gupta. సౌరశక్తి కథ. (cartoon book) Manchipustakam  </br></br>
+	9. Heat and temperature by Isaac Asimov, ఉష్ణం – ఉష్ణోగ్రత. Manchipustakam  </br></br>
+	10. భూమి – Isaac Asimov., Manchipustakam </br></br>
+	11. రెమ్మలు రమ్మన్నాయి – జగదీశ్ చంద్రబోద్ర స్ జీవిత చరిత్ర (Life of Jagadish Chandra Bose), 
+	Manchipustakam.  </br></br>
+	12. మహమ్మారిసంఖ్యలు (Magical numbers) – George Gamow. Manchipustakam  </br></br>
+	13. పాతాళానికిప్రయా ప్ర ణం, Journey to the Center of the Earth, Jules Verne. (Science fiction novel),
+	1864. Manchipustakam  </br></br>
+	14. రసాయన శాస్త్ర చరిత్ర – History of Chemistry, Isaac Asimov. (3 vols).  Manchipustakam
+	<p style="padding-left: 40px;">  
+	లోహ యుగం నుండిలెవోషియేదాక (vol 1)  </br>
+	అణుసిద్ధాం తం నుండి ఆర్హీనియస్ దాక (vol 2)  </br>
+	అద్దకాల నుండికేంద్రక ద్రసంయోగం దాక (vol 3)  </br> </p>
+	15. గణిత గారడీలు, యాకోవ్ పెరెల్మాన్, (Mathematics can be fun by Yakov Perelman), Mir Publishers.
+	Peacock Classics  </br></br>
+	16. నా కథ, చార్లెస్ డార్విన్. (Darwin’s autobiography) Peacock Classics.  </br></br>
+	17. తారలు, గ్రహాలు, (Stars and Planets) Raduga Publishers, మంచిపుస్తకం.  </br></br>
+	18. అందరికన్నా బలవంతులు ఎవరు? (Who is the strongest?) Manchipustakam.  </br></br>
+	19. కణాలు, కోటానుకోట్ల కణాలు, (Cells, billions of cells), Manchipustakam.  </br></br>
+	20.ఆనకట్టలు, వంతెనలు కట్టిదేశాన్ని పునర్నిర్మించిన ఎం. విశ్వేశ్వరయ్య, (Story of M. Visveswarayya), ప్రథప్రమ్.   </br></br>
+	21. జీవ శాస్త్ర చరిత్ర, (History of Biology), ఐ త్ర సాక్ అసిమోవ్, మొదటిభాగం, మంచి పుస్తకం.  </br></br>
+	22. జీవశాస్త్ర చరిత్ర, ఐత్ర సాక్ అసిమోవ్, రెండవ భాగం, మంచి పుస్తకం.  </br></br>
+	23. విశ్వసంద్రపు ద్ర తీరాలు, కార్ల్ సాగన్, (Carl Sagan’s Cosmos), ఎమెస్కో.  </br></br>
+	24. ‘కలలు చెప్పే కథలు’ (Man and his Symbols by Carl Jung), (to be published by Peacock Classics).  </br></br>
+	25. అరటిపండు వొలిచి పెట్టినట్టు భౌతిక శాస్త్రం – చలనం (Understanding Physcs: Motion by Isaac Asimov.)
+	Published by Manchi Pustakam. </br></br>
+	
+	<u><b> Isaac Asimov's "Science Fact" Masterpieces:  </u></b> </br></br>
+	<i>“How did we find out” series: Manchipustakam  </i> </br></br>
+	1. THE EARTH IS ROUND, భూ మి గుం డ్రం గా ఉం ది. </br></br>
+	2. ANTARCTICA, అంటార్కిటికా </br></br>
+	3. LIFE IN DEEP SEA, సము ద్రపుద్రపు లో తు ల్లో సజీవ ప్రపంప్రపంచం </br></br>
+	4. EARTHQUAKES, భూకంపాలు  </br></br>
+	5. GERMS, సూక్ష్మ క్రిముక్రి ములు  </br></br>
+	6. OIL, చమురు  </br></br>
+	7. OUTER SPACE, రోదసి </br></br>
+	8. SOLAR POWER, సౌరశక్తి </br></br>
+	9. ATMOSPHERE వాతావరణం  </br></br>
+  	10. PHOTOSYNTHESIS కిరణజన్య సం యోగ క్రియక్రి  </br></br>
+	11. OUR HUMAN ROOTS, మన మానవ మూలాలు </br></br>
+	12. DINOSAURS, డైనోసార్లు  </br></br>
+  	13. BEGINNING OF LIFE, జీవం పుట్టుక  </br></br>
+	14. VITAMINS, విటమిన్లు </br></br>
+	15. COMETS తోకచుక్క  </br></br>
+	16. NEPTUNE నెప్ట్యూన్  </br></br>
+	17. PLUTO ప్లూటో  </br></br>
+	18. BLACK HOLES నల్ల బిలాలు  </br></br>
+	19. BRAIN మెదడు   </br></br>
+	20. DNA డీ.ఎన్.ఏ.   </br></br>
+	21. BLOOD రక్తం  </br></br>
+	22. GENES జన్యువులు  </br></br>
+	23. ROBOTS రోబోలు  </br></br>
+	24. COAL బొగ్గు  </br></br>
+	25. SUPERCONDUCTIVITY అతివాహకత  </br></br>
+	26. VOLCANOES అగ్ని పర్వతాలు  </br></br>
+	27. LASERS లేసర్లు  </br></br>
+	28. SPEED OF LIGHT కాంతి వేగం  </br></br>
+	29. NUMBERS ఆంకెలు </br></br>
+	30. Universe విశ్వం </br></br>
+  </p>
+  </div>
+
+</br>
+</br>
+</br>
+</br>
+<h2> <u>                           Hindi Books:           </u>   </h2>  	
+  <div trs="true">
+</br>                                                     
+<p>  
+	1. डी. एन. ए (DNA) </br></br>
+	2. जीन्स (Genes)   </br></br>
+	3. विद्युत (Electricity)  </br></br>
+	4. सूर्य कैसे चमकता है? (How does the sun shine?) </br></br>
+	5. धूमकेतुओं (Comet)  </br></br>
+	6. सौर ऊर्जा (Solar Energy)  </br></br>
+	7. ब्लैक-होल्स (Black Holes)  </br></br>
+	8. कीटाणुओं (Bacteria)  </br></br>
+	9. विटामिन्स (Vitamins)  </br></br>
+	10. लेजर्स (Lasers) </br></br>
+	11. अंटार्कटिका (Antarctica)   </br></br>
+	12. प्लूटो (Pluto)  </br></br>
+	13. परमाणु (Atom)   </br></br>
+	14. ज्वालामुखियों (Volcano)   </br></br>
+	15. गहरे समुद्र मे जिन्दगी (Deep Sea Life)   </br></br>
+	16. मस्तिष् (Brain)   </br></br>
+	17. रोबोट्स (Robots)   </br></br>
+	18. प्रकाश की गति (Speed of Light)    </br></br>
+	19. पृथ्वी गोल है (The Earth is round)   </br></br>
+	20. फोटोसिंथेसिस (Photosynthesis)  </br></br>
+	21. रक्त (Blood)    </br></br>
+	22. जीवन की उत्पत्ति (Origin of Species)   </br></br>
+ 	23. डायनौसौर्स (Dinosaurs)   </br></br>
+	24. माइक्रोवेव (Microwave)  </br></br>
+  </p>
+</div>
+
+  <!-- end .content --></div>
+  <div class="footer">
+    <p align="center"><strong>Page designed and maintained by Computational Neuroscience Laboratory at <a href="http://www.iitm.ac.in/">IIT Madras</a></strong></p>
+  <!-- end .footer --></div>
+  <!-- end .container --></div>
+</body>
+</html>
+

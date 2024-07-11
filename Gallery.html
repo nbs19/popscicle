@@ -1,0 +1,621 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	
+<head>
+<meta http-equiv="content-Type" content="text/html; charset=UTF-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<title>POPSICLE</title>
+<style type="text/css">
+<!--
+body {
+	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+	background: #4E5869;
+	margin: 0;
+	padding: 0;
+	color: #000;
+	background-image: url(background.jpg);
+}
+
+/* ~~ Element/tag selectors ~~ */
+ul, ol, dl { /* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2,h3,h4, h5, h6, p {
+	margin-top: 0;	 /* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
+	padding-right: 15px;
+	font-weight: bold;
+	font-size: 22px;
+	padding-bottom: 2%;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	padding-left: 15px; /* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box model math. A nested div with side padding can also be used as an alternate method. */
+}
+
+a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+	border: none;
+}
+
+/* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+a:link {
+	color:#414958;
+	text-decoration: underline; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
+}
+a:visited {
+	color: #4E5869;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+	text-decoration: none;
+}
+
+/* ~~ this container1 surrounds all other divs giving them their percentage-based width ~~ */
+.container1 {
+	
+	/*max-width: 1260px;/* a max-width may be desirable to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration. */
+	/*min-width: 780px;/* a min-width may be desirable to keep this layout from getting too narrow. This keeps line length more readable in the side columns. IE6 does not respect this declaration. */
+	background: #FFF;
+	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container1's width to 100%. */
+}
+
+/* ~~ the header is not given a width. It will extend the full width of your layout. It contains an image placeholder that should be replaced with your own linked logo ~~ */
+.header {
+	background: #6F7D94;
+}
+
+/* ~~ These are the columns for the layout. ~~ 
+
+1) Padding is only placed on the top and/or bottom of the divs. The elements within these divs have padding on their sides. This saves you from any "box model math". Keep in mind, if you add any side padding or border to the div itself, it will be added to the width you define to create the *total* width. You may also choose to remove the padding on the element in the div and place a second div within it with no width and the padding necessary for your design.
+
+2) No margin has been given to the columns since they are all floated. If you must add margin, avoid placing it on the side you're floating toward (for example: a right margin on a div set to float right). Many times, padding can be used instead. For divs where this rule must be broken, you should add a "display:inline" declaration to the div's rule to tame a bug where some versions of Internet Explorer double the margin.
+
+3) Since classes can be used multiple times in a document (and an element can also have multiple classes applied), the columns have been assigned class names instead of IDs. For example, two sidebar divs could be stacked if necessary. These can very easily be changed to IDs if that's your preference, as long as you'll only be using them once per document.
+
+4) If you prefer your nav on the right instead of the left, simply float these columns the opposite direction (all right instead of all left) and they'll render in reverse order. There's no need to move the divs around in the HTML source.
+
+*/
+.sidebar1 {
+	float: left;
+	width: 20vw;
+	background: rgb(50, 200, 170);
+	padding-bottom: 10px;
+	height: inherit ;
+	text-align: center;
+}
+.content1 {
+	padding: 10px 0;
+	width: 70%;
+	float: left;
+}
+
+/* ~~ This grouped selector gives the lists in the .content1 area space ~~ */
+.content1 ul, .content1 ol { 
+	padding: 0 15px 15px 40px; /* this padding mirrors the right padding in the headings and paragraph rule above. Padding was placed on the bottom for space between other elements on the lists and on the left to create the indention. These may be adjusted as you wish. */
+}
+
+/* ~~ The navigation list styles (can be removed if you choose to use a premade flyout menu like Spry) ~~ */
+ul.nav {
+	list-style: none; /* this removes the list marker */
+	border-top: 1px solid #666; /* this creates the top border for the links - all others are placed using a bottom border on the LI */
+	margin-bottom: 15px; /* this creates the space between the navigation on the content1 below */
+}
+ul.nav li {
+	border-bottom: 1px solid #666; /* this creates the button separation */
+}
+ul.nav a, ul.nav a:visited { /* grouping these selectors makes sure that your links retain their button look even after being visited */
+	padding: 5px 5px 5px 15px;
+	display: block; /* this gives the link block properties causing it to fill the whole LI containing it. This causes the entire area to react to a mouse click. */
+	text-decoration: none;
+	background: #8090AB;
+	color: #000;
+}
+ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background and text color for both mouse and keyboard navigators */
+	background: #6F7D94;
+	color: #8090AB;
+}
+
+/* ~~ The footer ~~ */
+.footer {
+	padding: 10px 0;
+	background: wheat;
+	position: relative;/* this gives IE6 hasLayout to properly clear */
+	clear: both; /* this clear property forces the .container1 to understand where the columns end and contain them */
+}
+
+/* ~~ miscellaneous float/clear classes ~~ */
+.fltrt {  /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page. The floated element must precede the element it should be next to on the page. */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* this class can be placed on a <br /> or empty div as the final element following the last floated div (within the #container1) if the #footer is removed or taken out of the #container1 */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+.container1 .sidebar1 p a strong {
+	color: #FFF;
+}
+.container1 .sidebar1 p a strong {
+	font-family: Georgia, Times New Roman, Times, serif;
+}
+.container1 .sidebar1 p a strong {
+	font-family: Georgia, Times New Roman, Times, serif;
+}
+.container1 .sidebar1 h4 a {
+	color: #FFF;
+}
+.container1 .sidebar1 h4 a {
+	font-family: Georgia, Times New Roman, Times, serif;
+}
+.container1 .footer p {
+	color: #FFF;
+}
+.container1 .footer p {
+	font-family: Georgia, Times New Roman, Times, serif;
+}
+.container1 .content1 {
+	font-family: Georgia, Times Neh1w Roman, Times, serif;
+}
+#space{
+	word-spacing: 40px;
+}
+ pre[xyz]{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 25px;
+  font-weight: bold;
+ }
+ pre[cont]{
+  font-size: 18px;
+ }
+ .container11{
+	/*height:900px;
+	margin-left: 300px;
+	padding-right: 300px;
+	padding-top: 700px ;
+	width:100% */
+	
+    margin-left: 295px;
+	height: 150vh ;
+	width: 80vw;
+    background-image: url('tigpea.png'); /* Replace 'your-image-url.jpg' with the URL of your background image */ 
+	background-size: cover;
+    background-color: wheat;
+}
+.pophead{
+   text-align: center;
+   font-weight: bold;
+   color: gold;
+   font-family: Georgia, 'Times New Roman', Times, serif;
+   font-size: 70px;
+   margin:0;
+}
+.popsubh{
+	text-align: center;
+	font-family: "kalam";
+	font-weight: bold;
+   color: gold;
+   margin:0;
+   font-size: 70px;
+
+}
+.cropb{
+	margin-top: 2vh;
+	margin-right:400px ;
+	margin-left: 700px;
+}
+
+-->
+</style><!--[if lte IE 7]>
+<style>
+.content1 { margin-right: -1px; } /* this 1px negative margin can be placed on any of the columns in this layout with the same corrective effect. */
+ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it needs to correct extra whiltespace between the links */
+</style>
+<![endif]-->
+</head>
+
+<body>
+	<div class="container1">
+	<div class="sidebar1">
+		<h4>&nbsp;</h4>     
+	   <h2><a href="home.html">Home</a></h2>
+	   <p>&nbsp;</p>
+	   <!-- <h4><strong><a href="vision.html">Vision</a></strong></h4>
+	   <h4>&nbsp;</h4> -->
+	   <h2><a href="school-project-lib.html"><strong>School-Project Library</strong></a></h2>
+		<h4>&nbsp;</h4>  
+		<h2><a href="e-books.html">E-Books</a></h2>
+		<h4>&nbsp;</h4>
+	   <h2><a href="Audio.html">Audio Books</a></h2>
+		 <h4>&nbsp;</h4>    
+	   <!--<h4><a href="e-book.html">E books</a></h4>
+		 <h4>&nbsp;</h4> -->
+	   <h2><a href="Videos.html">Videos</a></h2>
+		 <h4>&nbsp;</h4>
+	   <h2><a href="media.html">Media</a></h2>
+		 <h4>&nbsp;</h4>
+		<h2><a href="gallery.html">Gallery</a></h2>
+		 <h4>&nbsp;</h4>	 	 
+	   <h2><a href="Career_Guidance.html">Career Guidance</a></h2>
+	   <p>&nbsp;</p>
+	   <h2><a href="Sponsors.html">Sponsors</a></h2>
+	   <h4>&nbsp;</h4>
+	   <h2><a href="reader-corner.html">Reader's Corner</a></h2>
+	   <h4>&nbsp;</h4>
+		<h2><a href="contact-us.html">Contact Us</a></h2>
+	   <p></p>
+     <p>&nbsp;</p>
+     <p>&nbsp;</p>
+<p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+<p>&nbsp;</p>
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+	<p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+    <p>&nbsp;</p>
+	<p>&nbsp;</p>
+ 
+	
+<p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  <!-- end .sidebar1 --></div>
+
+    <h2 class="pophead"> POPular ScIence CLiquE</h2>
+    <h3 class="popsubh"> <u>POPSICLE</u></h3>
+	<p style="padding-left: 350px; padding-top: 50px;">
+		<u> Interaction with School Students </u>
+	</p>
+	<div class="cropb">
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+			  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			  <li data-target="#myCarousel" data-slide-to="1"></li>
+			</ol>
+		  
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner">
+			  <div class="item active">
+				<img src="School_Gallery\suryapet.jpg" alt="Suryapet District-1" height= "700px" width= "500px">
+			  </div>
+		       
+			  <div class="item">
+				<img src="School_Gallery\suryapet2.jpg" alt="Suryapet District-2" width="700px" height="500px">
+			  </div>
+		  
+			</div>
+			
+			<!-- Left and right controls -->
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+			  <span class="glyphicon glyphicon-chevron-left"></span>
+			  <span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel" data-slide="next">
+			  <span class="glyphicon glyphicon-chevron-right"></span>
+			  <span class="sr-only">Next</span>
+			</a>
+		  </div>
+		  <p style="margin-left: -300px; padding-top: 20px; margin-right: -300px; font-size: medium;">☛ 400 sets of 'Rocket kurrallu' and 'viswam' telugu Books are distributed to students at Telangana Model School
+			Munagala(V&M), Suryapet District, Telangana.
+			</p>
+				</div> 
+			</br>
+	<hr  size="3" style= "margin-left: 500px; margin-right: 15%; color: black; "> </hr>
+</br>
+	 
+
+
+<div class="cropb">
+	<div id="myCarousel1" class="carousel slide" data-ride="carousel">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+		  <li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
+		  <li data-target="#myCarousel1" data-slide-to="1"></li>
+		  <li data-target="#myCarousel1" data-slide-to="2"></li>
+		</ol>
+	  
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner">
+		  <div class="item active">
+			<img src="School_Gallery/TS_Model_kandla.jpg" alt="Image Error" height= "700px" width= "500px">
+		  </div>
+		   
+		  <div class="item">
+			<img src="School_Gallery/TS_Model_kandla.jpg2" alt="Image Error" width="700px" height="500px">
+		  </div>
+	  
+		</div>
+		
+		<!-- Left and right controls -->
+		<a class="left carousel-control" href="#myCarousel1" data-slide="prev">
+		  <span class="glyphicon glyphicon-chevron-left"></span>
+		  <span class="sr-only">Previous</span>
+		</a>
+		<a class="right carousel-control" href="#myCarousel1" data-slide="next">
+		  <span class="glyphicon glyphicon-chevron-right"></span>
+		  <span class="sr-only">Next</span>
+		</a>
+	  </div>
+	  <p style="margin-left: -300px; padding-top: 20px; margin-right: -300px; font-size: medium;">☛  8 Telugu Asimov sets (each set has 33 books), Manchipustakam genre, were distributed at TS Model School, Kandlapalli,
+		Jagtial Rural, by Suresh Kosaraju. Program was held on 24th January, 2023
+		
+		</p>
+			</div>
+
+		</br>
+		<hr  size="3" style= "margin-left: 500px; margin-right: 15%; color: black; "> </hr>
+	</br>
+		 
+	
+	
+	<div class="cropb">
+		<div id="myCarousel2" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+			  <li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
+			  <li data-target="#myCarousel2" data-slide-to="1"></li>
+			  <li data-target="#myCarousel2" data-slide-to="2"></li>
+			</ol>
+		  
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner">
+				<div class="item active">
+					<img src="School_Gallery/kanchepuram.jpg" alt="Image Error" style="height:400px; width:700px;">
+				  </div>
+				   
+				  <div class="item">
+					<img src="School_Gallery/kanchepuram2.jpg" alt="Image Error" style="height:400px; width:700px;">
+				  </div>
+				
+				  <div class="item">
+					<img src="School_Gallery/sadipet.jpg" alt="Image Error" style="height:400px; width:700px;">
+				  </div>
+		  
+			</div>
+			
+			<!-- Left and right controls -->
+			<a class="left carousel-control" href="#myCarousel2" data-slide="prev">
+			  <span class="glyphicon glyphicon-chevron-left"></span>
+			  <span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel2" data-slide="next">
+			  <span class="glyphicon glyphicon-chevron-right"></span>
+			  <span class="sr-only">Next</span>
+			</a>
+		  </div>
+		  <p style="margin-left: -300px; padding-top: 20px; margin-right: -300px; font-size: medium;">☛ Student interactions involving activities such as Career Guidance Sessions, Book Distribution, and Science Experiments took place at Chennai High School, New St. Kotturpuram, Tamil Nadu with around 100 studensts present.
+		</p>
+				</div>
+	
+			</br>
+			<hr  size="3" style= "margin-left: 500px; margin-right: 15%; color: black; "> </hr>
+		</br>
+			 
+		<div class="cropb">
+		<div id="myCarousel3" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+			  <li data-target="#myCarousel3" data-slide-to="0" class="active"></li>
+			  <li data-target="#myCarousel3" data-slide-to="1"></li>
+			  <li data-target="#myCarousel3" data-slide-to="2"></li>
+			</ol>
+		  
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner">
+				<div class="item active">
+					<img src="School_Gallery/kottupuram.jpg" alt="Image Error" style="height:250px; width:700px;">
+				  </div>
+				   
+				  <div class="item">
+					<img src="School_Gallery/kottupuram2.jpg" alt="Image Error" style="height:250px; width:700px;">
+				  </div>
+				
+				  <div class="item">
+					<img src="School_Gallery/kottupuram3.jpg" alt="Image Error" style="height:250px; width:700px;">
+				  </div>
+		  
+			</div>
+			
+			<!-- Left and right controls -->
+			<a class="left carousel-control" href="#myCarousel3" data-slide="prev">
+			  <span class="glyphicon glyphicon-chevron-left"></span>
+			  <span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel3" data-slide="next">
+			  <span class="glyphicon glyphicon-chevron-right"></span>
+			  <span class="sr-only">Next</span>
+			</a>
+		  </div>
+		  <p style="margin-left: -300px; padding-top: 20px; margin-right: -300px; font-size: medium;">☛ Student interactions involving activities such as Career Guidance Sessions, Book Distribution, and Science Experiments took place at two locations: Edaikazhinadu Ward 14, Chithamur (Kancheepuram), and Chennai Government Girls High School, Tamil Nadu. A total of 220 students and 750 students respectively participated in these programs at the two locations
+		</p>
+				</div>
+	
+			</br>
+			<hr  size="3" style= "margin-left: 500px; margin-right: 15%; color: black; "> </hr>
+		</br>
+
+		<div class="cropb">
+			<div id="myCarousel4" class="carousel slide" data-ride="carousel">
+				<!-- Indicators -->
+				<ol class="carousel-indicators">
+				  <li data-target="#myCarousel4" data-slide-to="0" class="active"></li>
+				  <li data-target="#myCarousel4" data-slide-to="1"></li>
+				  <li data-target="#myCarousel4" data-slide-to="2"></li>
+				  <li data-target="#myCarousel4" data-slide-to="3"></li>
+				  <li data-target="#myCarousel4" data-slide-to="4"></li>
+				  <li data-target="#myCarousel4" data-slide-to="5"></li>
+				  <li data-target="#myCarousel4" data-slide-to="6"></li>
+				  <li data-target="#myCarousel4" data-slide-to="7"></li>
+				</ol>
+			  
+				<!-- Wrapper for slides -->
+				<div class="carousel-inner">
+					<div class="item active">
+						<img src="School_Gallery/anakapalli.jpg" alt="Image Error" style="height:250px; width:700px;">
+					  </div>
+					   
+					  <div class="item">
+						<img src="School_Gallery/anakapalli2.jpg" alt="Image Error" style="height:250px; width:700px;">
+					  </div>
+
+					  <div class="item">
+						<img src="School_Gallery/anakapalli_kunta.png" alt="Image Error" style="height:350px; width:700px;">
+					  </div>
+					
+					  <div class="item">
+						<img src="School_Gallery/anakapalli3.jpg" alt="Image Error" style="height:250px; width:700px;">
+					  </div>
+
+					  <div class="item">
+						<img src="School_Gallery/kunta.jpg"  alt="Image Error" style="height:250px; width:700px;">
+					  </div>
+
+					  <div class="item">
+						<img src="School_Gallery/kunta2.jpg" alt="Image Error" style="height:250px; width:700px;">
+					  </div>
+
+					  <div class="item">
+						<img src="School_Gallery/chintapalli.jpg" alt="Image Error" style="height:350px; width:700px;">
+					  </div>
+
+					  <div class="item">
+						<img src="School_Gallery/chintapalli2.jpg" alt="Image Error" style="height:250px; width:700px;">
+					  </div>
+
+			  
+				</div>
+				
+				<!-- Left and right controls -->
+				<a class="left carousel-control" href="#myCarousel4" data-slide="prev">
+				  <span class="glyphicon glyphicon-chevron-left"></span>
+				  <span class="sr-only">Previous</span>
+				</a>
+				<a class="right carousel-control" href="#myCarousel4" data-slide="next">
+				  <span class="glyphicon glyphicon-chevron-right"></span>
+				  <span class="sr-only">Next</span>
+				</a>
+			  </div>
+			  <p style="margin-left: -300px; padding-top: 20px; margin-right: -300px; font-size: medium;">☛ Student and Teachers interactions involving activities such as Career Guidance Sessions, Book Distribution, and Science Experiments took place at AP model schools in Ananthpur, Chitoor, Anakapalli districts. Nearly 100 teachers including principals and AP government officials participated in the session.			</p>
+					</div>
+		
+				</br>
+				<hr  size="3" style= "margin-left: 500px; margin-right: 15%; color: black; "> </hr>
+			</br>
+
+
+
+			<div class="cropb">
+				<div id="myCarousel5" class="carousel slide" data-ride="carousel">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+					  <li data-target="#myCarousel5" data-slide-to="0" class="active"></li>
+					  <li data-target="#myCarousel5" data-slide-to="1"></li>
+					  <li data-target="#myCarousel5" data-slide-to="2"></li>
+					  <li data-target="#myCarousel5" data-slide-to="3"></li>
+					  <li data-target="#myCarousel5" data-slide-to="4"></li>
+					</ol>
+				  
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner">
+						<div class="item active">
+							<img src="School_Gallery/asr_Digumodaputtu.jpg" alt="Image Error" style="height:250px; width:700px;">
+						  </div>
+						   
+						  <div class="item">
+							<img src="School_Gallery/asr_Digumodaputtu2.jpg" alt="Image Error" style="height:250px; width:700px;">
+						  </div>
+	
+						  <div class="item">
+							<img src="School_Gallery/Alluri_seetharamaraju.jpg" alt="Image Error" style="height:250px; width:700px;">
+						  </div>
+						
+						  <div class="item">
+							<img src="School_Gallery/Alluri_seetharamaraju2.jpg" alt="Image Error" style="height:250px; width:700px;">
+						  </div>
+	
+						  <div class="item">
+							<img src="School_Gallery/Alluri_seetharamaraju3.jpg"  alt="Image Error" style="height:250px; width:700px;">
+						  </div>
+	
+						  <div class="item">
+							<img src="School_Gallery/Alluri_seetharamaraju4.jpg" alt="Image Error" style="height:250px; width:700px;">
+						  </div>
+					  
+					</div>
+					
+					<!-- Left and right controls -->
+					<a class="left carousel-control" href="#myCarousel5" data-slide="prev">
+					  <span class="glyphicon glyphicon-chevron-left"></span>
+					  <span class="sr-only">Previous</span>
+					</a>
+					<a class="right carousel-control" href="#myCarousel5" data-slide="next">
+					  <span class="glyphicon glyphicon-chevron-right"></span>
+					  <span class="sr-only">Next</span>
+					</a>
+				  </div>
+				  <p style="margin-left: -300px; padding-top: 20px; margin-right: -300px; font-size: medium;">☛ Book Distribution at GTWAS(Boys) school, Digumodaputtu  and  Govt Tribal Welfare Ashrams School (Girls) in Padenu mandal. Around 100 students participated and a 99 books Telugu Asimov sets with 33 titles books are distributed </p>
+						</div>                                                                                                                                                                                                                                                                                                                   
+			                                                                                                                                                                                                                                                                                
+					</br>
+				</br>
+			 
+
+	   <div class="footer">
+    <p align="center">Page designed and maintained by Computational Neuroscience Laboratory at <a href="http://www.iitm.ac.in/">IIT Madras</a></p>
+  <!-- end .footer --></div>
+  <!-- end .container1 --></div>
+</body>
+</html>
+
+  
